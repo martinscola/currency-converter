@@ -1,1 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
+body {
+  color: white !important;
+  background:
+    linear-gradient(
+      rgba(0, 0, 0, 0.65),
+      rgba(0, 0, 0, 0.65)
+  ), url("./assets/img/background/bg-dollar.jpg") no-repeat fixed top  !important;
+}

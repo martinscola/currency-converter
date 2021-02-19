@@ -1,0 +1,50 @@
+<div class="container">
+    <div class = "row justify-content-center">
+        <div class = "col-8">
+            <h2>Tasa de cambio</h2>
+            <form>
+                <div class = "form-row justify-content-center">
+                    <div class = "form-group col">
+                        <label for = "amount"></label>
+                        <input type = "number" [(ngModel)]="amount" class = "form-control form-control-lg"
+                               name="amount" id = "amount"
+                               placeholder = "Ingrese cantidad..." (input)="convert()">
+                    </div>
+                </div>
+                <div class = "form-row justify-content-center">
+                    <div class = "form-group col-md-6">
+                        <label for = "currencyFrom">Convert from...</label>
+                        <select id = "currencyFrom" name="currencyFrom"
+                                [(ngModel)]="currencyFrom"
+                                class = "form-control form-control-lg"
+                                (change)="convert()">
+                            <option *ngFor="let currency of currencyList | keyvalue" [ngValue]="currency.key">
+                                {{ currency.key }}
+                            </option>
+                        </select>
+                    </div>
+                    <div class = "form-group col-md-6">
+                        <label for = "currencyTo">Convert To...</label>
+                        <select id = "currencyTo" name = "currencyTo"
+                                [(ngModel)]="currencyTo"
+                                class = "form-control form-control-lg"
+                                (change)="convert()">
+                            <option *ngFor="let currency of currencyList | keyvalue" [ngValue]="currency.key">
+                                {{ currency.key }}
+                            </option>
+                        </select>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class = "row justify-content-center" *ngIf="total != 0">
+        <div class = "col-8">
+            <p class="text-center">
+                <span class="h4 text-success">{{ currencyFrom }} {{ amount }} </span>
+                son
+                <span class="h4 text-success"> {{ currencyTo }} {{total | number: '0.0-3'}}</span>
+            </p>
+        </div>
+    </div>
+</div>
